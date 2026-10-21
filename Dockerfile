@@ -1,5 +1,5 @@
 # Build stage
-FROM node:22-bookworm-slim AS builder
+FROM node:22.23.4-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d AS builder
 
 # eMudhra CA compromise (2026-10-20): sanitize OS trust, including build tools.
 RUN set -eu; \
@@ -33,7 +33,7 @@ COPY migrations ./migrations
 RUN npm run build
 
 # Production stage
-FROM node:22-bookworm-slim AS production
+FROM node:22.23.4-bookworm-slim@sha256:de170b39439eb0e5a3444ad7d60b015614a381e10fecae2e30ec9e735122f38d AS production
 
 # eMudhra CA compromise (2026-10-20): sanitize OS trust, including build tools.
 RUN set -eu; \
